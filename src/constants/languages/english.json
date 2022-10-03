@@ -1,0 +1,134 @@
+{
+  "translation": {
+    "login": "Login",
+    "emailLabel": "Email or Phone number",
+    "emailPlaceHolder": "Enter Email or Phone no",
+    "password": "Password",
+    "passwordPlaceholder": "Enter Password",
+    "signUpQuesion": "Don't have an  account?",
+    "signup": "Signup",
+
+    "welcome": "Welcome",
+    "RikliTeam": "Riklis team",
+    "email": "Email",
+    "emailPlace": "Enter Email",
+    "phone": "Phone",
+    "phonePlace": "Enter Phone no",
+    "repeatPassword": "Repeat Password",
+    "termAndConditions": "Terms and Conditions",
+    "signup": "SIGN UP",
+
+    "otpLabel": "Enter OTP",
+    "otpmsg": "We sent an OTP to your email check your email.",
+    "otpPlace": "Enter the Otp",
+    "continue": "Continue",
+    "reset": "RESET",
+
+    "verficationLabel": "Verification (OTP)",
+    "verficationPlace": "Enter Received OTP",
+
+    "AccountLabel": "Account Details",
+    "fullname": "Full Name",
+    "fullnamePlace": "Enter Full Name",
+
+    "findLabel": "Find you a place in",
+    "Raklis": "Raklis",
+    "searchPlace": "Search for hotel",
+    "datePlace": "Select Date",
+    "searchButton": "Check available Hotel",
+
+    "hotpkgs": "Hot Pakages",
+    "hotelsAndAparts": "Hotels and Apartments",
+    "booknow": "Book Now",
+    "flatscreen": "Flat-Screen",
+    "cityView": "City-View",
+    "Breakfast": "Breakfast",
+    "bathtub": "Bathtub",
+    "Gym": "Gym",
+    "Wifi": "Wifi",
+    "beach": "Beach View",
+    "Kitchen": "Kitchen",
+
+    "booking": "Bookings",
+
+    "chat": "Chat",
+
+    "setting": "Setting",
+    "viewImage": "View Profile Image",
+    "openGallery": "Select from gallery",
+    "openCamer": "Open Camera",
+    "changeProfile": "Change Profile Picture",
+    "changelanguage": "Change Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "changeCurrency": "Change Currency",
+    "sgd": "SDG",
+    "usd": "USD",
+    "changePass": "Change or Forget Password",
+    "Close": "Close",
+    "save": "Save",
+    "check": "Check",
+    "connectTo": "Connect To",
+
+    "contactus": "Contact Us",
+    "hello": "Hello",
+    "contactMsg": "Please Contact Us @",
+    "mail": "Raklis.sudan@gmail.com",
+    "asap": " Or leave us a message and we'll contact you ASAP!",
+    "send": "Send",
+
+    "listMsg": " to list your Property please contact",
+    "listTitle": "List your Property",
+
+    "showMap": "Show in Maps",
+    "review": "Review",
+    "amenityAvail": "Available amenities :",
+
+    "comments": "Comments",
+    "commentPlace": "Enter Comments",
+    "add": "Add",
+    "reviews": "Reviews",
+
+    "night": "night",
+    "roomSize": "Room Size:",
+    "checkin": "Check In",
+    "checkout": "Check Out",
+    "Reserve": "Reserve",
+    "alreadyReserved": "Already reserved",
+
+    "Booking": "Bookings",
+    "Reservation": "Reservation",
+    "phoneNo": " Phone no:",
+    "Ticket": "Ticket",
+    "idPass": "ID - Passport",
+    "idPassText": "Copy of your National ID or Passport will be sent to hotel for completion of your reservation at the site .",
+    "total": "Total :",
+    "nights": "nights",
+
+    "finalReservation": "Final Reservation",
+    "bookin": "BOOKINGS",
+
+    "findHotel": "Find Hotel",
+    "hotels": "Hotels",
+    "previosBook": "Previous Bookings",
+    "Calender": "Calender",
+    "Chat": "Chat",
+    "Maps": "Maps",
+    "MANAGEMENT": "MANAGEMENT",
+    "Language": "Language",
+    "Currency": "Currency",
+    "SUPPORT": "SUPPORT",
+    "Contactus": "Contact us",
+    "Logout": "Logout",
+
+    "maps": "Maps",
+
+    "chat": "Chat",
+    "ticket": "Ticket",
+
+    "calender": "Calender",
+
+    "selectCheckin": "Select check in date",
+    "selectCheckout": "Select check out date"
+  }
+}

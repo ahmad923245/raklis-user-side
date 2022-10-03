@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "15634771759",
+    "project_id": "raklis-7e744",
+    "storage_bucket": "raklis-7e744.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15634771759:android:be0935bb7fccb129be7bda",
+        "android_client_info": {
+          "package_name": "com.raklis_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15634771759-ac5o1b6s6t2s6nrkq02ul9cl7l2sk9ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqnR1yFcrQCHeQLt9z2JTgEHFmKIL3y58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15634771759-ac5o1b6s6t2s6nrkq02ul9cl7l2sk9ks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
