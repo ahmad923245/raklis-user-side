@@ -1,4 +1,4 @@
-import React, {useDebugValue, useEffect, useState} from 'react';
+import React, { useDebugValue, useEffect, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,17 +8,19 @@ import {
   FlatList,
   ScrollView,
   TextInput,
+  Platform,
+  Linking
 } from 'react-native';
-import {theme} from '../../../theme/theme';
-import {SliderBox} from 'react-native-image-slider-box';
+import { theme } from '../../../theme/theme';
+import { SliderBox } from 'react-native-image-slider-box';
 import BackButton from '../../../components/backButton';
-import {moderateScale} from '../../../constants/moderateScale';
+import { moderateScale } from '../../../constants/moderateScale';
 import Styles from './styles';
 import Button from '../../../components/button';
-import {Icon} from '@rneui/base';
+import { Icon } from '@rneui/base';
 import StarRating from 'react-native-star-rating';
-import {useDispatch, useSelector} from 'react-redux';
-import {apiKey} from '../../../constants/constants';
+import { useDispatch, useSelector } from 'react-redux';
+import { apiKey } from '../../../constants/constants';
 import ShowSnackBar from '../../../components/SnackBar';
 import {
   addReview,
@@ -27,14 +29,14 @@ import {
   homeLoad,
   likeHotel,
 } from '../../../redux/actions/home';
-import {Loading} from '../../../components/Loading';
-import {useTranslation} from 'react-i18next';
+import { Loading } from '../../../components/Loading';
+import { useTranslation } from 'react-i18next';
 
-const HotelDetails = ({navigation, route}) => {
-  const {t} = useTranslation();
+const HotelDetails = ({ navigation, route }) => {
+  const { t } = useTranslation();
 
-  const {loginData} = useSelector(state => state.auth);
-  const {homeData, homeLoading} = useSelector(state => state.home);
+  const { loginData } = useSelector(state => state.auth);
+  const { homeData, homeLoading } = useSelector(state => state.home);
   const [liked, setLiked] = useState(false);
   const images = [
     require('../../../images/hotelImage.png'),
@@ -44,7 +46,7 @@ const HotelDetails = ({navigation, route}) => {
   const [review, setReview] = useState('');
 
   const dispatch = useDispatch();
-  const {index} = route.params;
+  const { index } = route.params;
 
   useEffect(() => {
     setFav();
@@ -105,6 +107,32 @@ const HotelDetails = ({navigation, route}) => {
     console.log('ok');
   };
 
+
+  const openGps = () => {
+
+    // let dm = 31.3869161
+    // let d2 = 73.0759443
+
+    // var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
+    // var url = scheme + `${dm},${d2}`;
+    // Linking.openURL(url);
+
+    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+    const latLng = `${homeData.lat},${homeData.lng}`;
+    const label = 'Custom Label';
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`
+    });
+
+
+    Linking.openURL(url);
+
+  }
+
+
+
+  console.log('succc', homeData)
   return (
     <SafeAreaView style={Styles.mainCont}>
       <SliderBox autoplay circleLoop images={homeData.images} />
@@ -121,23 +149,28 @@ const HotelDetails = ({navigation, route}) => {
           <View>
             <Text style={Styles.name}>{homeData.name}</Text>
             <Text
-              style={{fontSize: 14, marginTop: 5, color: theme.colors.border}}>
+              style={{ fontSize: 14, marginTop: 5, color: theme.colors.border }}>
               Khartoum, Sudan
             </Text>
           </View>
-          <View style={{width: '30%'}}>
+          <View style={{ width: '30%' }}>
             <StarRating
-              containerStyle={{width: '100%'}}
+              containerStyle={{ width: '100%' }}
               disabled={false}
               maxStars={5}
               rating={homeData.rating}
               starSize={20}
               fullStarColor={'#FFD700'}
             />
-            <Text
-              style={{fontSize: 14, marginTop: 5, color: theme.colors.border}}>
-              {t('showMap')}
-            </Text>
+            <TouchableOpacity
+              onPress={openGps}
+            >
+              <Text
+                style={{ fontSize: 14, marginTop: 5, color: theme.colors.border }}>
+                {t('showMap')}
+              </Text>
+
+            </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={() => {
@@ -168,7 +201,7 @@ const HotelDetails = ({navigation, route}) => {
               }}>
               <Text style={Styles.des}>{homeData.rating}</Text>
               <StarRating
-                containerStyle={{width: '40%', marginLeft: 4}}
+                containerStyle={{ width: '40%', marginLeft: 4 }}
                 disabled={false}
                 maxStars={5}
                 rating={homeData.rating}
@@ -197,9 +230,9 @@ const HotelDetails = ({navigation, route}) => {
               keyExtractor={index => index}></FlatList>
           </View> */}
           <View style={Styles.animityTab}>
-            <Text style={{color: 'black'}}>{t('amenityAvail')}</Text>
+            <Text style={{ color: 'black' }}>{t('amenityAvail')}</Text>
             <View>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 {homeData.flat_screen && (
                   <View style={Styles.amentiesTab}>
                     <View style={Styles.amentiesIcon}>
@@ -320,7 +353,7 @@ const HotelDetails = ({navigation, route}) => {
               }}
               style={[
                 Styles.heartButton,
-                {backgroundColor: liked ? theme.colors.darkBlue : 'white'},
+                { backgroundColor: liked ? theme.colors.darkBlue : 'white' },
               ]}>
               <Icon
                 name="hearto"
@@ -337,19 +370,19 @@ const HotelDetails = ({navigation, route}) => {
           </View>
         </View>
         <View style={Styles.line}></View>
-        <View style={{width: theme.size.width, alignSelf: 'center'}}>
+        <View style={{ width: theme.size.width, alignSelf: 'center' }}>
           <View
             style={{
               width: theme.size.width,
               alignSelf: 'center',
               marginTop: 40,
             }}>
-            <Text style={{fontSize: theme.fontSize.normal, color: 'black'}}>
+            <Text style={{ fontSize: theme.fontSize.normal, color: 'black' }}>
               {t('comments')}
             </Text>
           </View>
           <StarRating
-            containerStyle={{width: '90%', alignSelf: 'center', marginTop: 10}}
+            containerStyle={{ width: '90%', alignSelf: 'center', marginTop: 10 }}
             disabled={false}
             maxStars={5}
             rating={starCount}
@@ -363,7 +396,7 @@ const HotelDetails = ({navigation, route}) => {
               type="font-awesome-5"
               color={theme.colors.bgColor}
               size={16}
-              style={{marginTop: 5}}
+              style={{ marginTop: 5 }}
             />
             <TextInput
               style={{
@@ -393,7 +426,7 @@ const HotelDetails = ({navigation, route}) => {
               alignSelf: 'center',
               marginTop: 40,
             }}>
-            <Text style={{fontSize: theme.fontSize.normal, color: 'black'}}>
+            <Text style={{ fontSize: theme.fontSize.normal, color: 'black' }}>
               {t('reviews')}
             </Text>
           </View>
@@ -406,13 +439,13 @@ const HotelDetails = ({navigation, route}) => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}>
-                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Text style={{marginLeft: 10, color: 'black'}}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ marginLeft: 10, color: 'black' }}>
                       {item.user_name}
                     </Text>
                   </View>
                   <StarRating
-                    containerStyle={{width: '30%', marginLeft: 4}}
+                    containerStyle={{ width: '30%', marginLeft: 4 }}
                     disabled={false}
                     maxStars={5}
                     rating={item.rating}
@@ -421,14 +454,14 @@ const HotelDetails = ({navigation, route}) => {
                     fullStarColor={theme.colors.darkBlue}
                   />
                 </View>
-                <Text style={{marginTop: 10, marginLeft: 10, color: 'black'}}>
+                <Text style={{ marginTop: 10, marginLeft: 10, color: 'black' }}>
                   {item.review}{' '}
                 </Text>
               </View>
             );
           })}
         </View>
-        <View style={{height: 50}}></View>
+        <View style={{ height: 50 }}></View>
       </ScrollView>
       <Loading visible={homeLoading} />
     </SafeAreaView>

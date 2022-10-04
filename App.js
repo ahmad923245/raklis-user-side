@@ -6,6 +6,8 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import {store, persister} from './src/redux/store';
 import i18n from './src/constants/languages/i18n';
+
+
 export default App = () => {
   // AppLovinMAX.initialize(
   //   'A-9kTvOkDZ-qwU9XS2_569ZH63dK3tysrcfnwR9FPJB-G4II6l1b5zKGgUMJyVT4a3E8KSoMfin9fitBw2V5DI',

@@ -27,11 +27,12 @@ import {Loading} from '../../../components/Loading';
 import i18next from 'i18next';
 import translate from 'translate-google-api';
 import {Nodata} from '../../../components/noDataAvailable';
+import { useTranslation } from 'react-i18next';
 
 const ChatDetail = ({navigation, route}) => {
   const {userId, userName} = route.params;
   console.log(userId);
-
+  const { t } = useTranslation();
   const [msg, setMsg] = useState('');
   const {loginData, callAPI} = useSelector(state => state.auth);
   const {conversation} = useSelector(state => state.home);
@@ -177,7 +178,7 @@ const ChatDetail = ({navigation, route}) => {
       <View style={{alignSelf: 'center'}}></View>
       {conversation?.length === 0 ? (
         <View style={{height: 400}}>
-          <Nodata title={'No Conversation Available \n with this user'} />
+          <Nodata title={t('noconvertion')} />
         </View>
       ) : (
         <ScrollView
@@ -201,7 +202,7 @@ const ChatDetail = ({navigation, route}) => {
                 <View style={Styles.questionTab}>
                   <Text style={{color: 'black'}}>{item.message}</Text>
                 </View>
-                <Text style={Styles.tixme}>{item.time}</Text>
+                <Text style={Styles.time}>{item.time}</Text>
               </View>
             );
           })}
@@ -215,7 +216,7 @@ const ChatDetail = ({navigation, route}) => {
         <View style={Styles.messageCont}>
           <TextInput
             style={Styles.msgInput}
-            placeholder={'Enter Message...'}
+            placeholder={t('entermessage')}
             placeholderTextColor={'black'}
             onChangeText={val => {
               setMsg(val);

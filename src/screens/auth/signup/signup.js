@@ -109,6 +109,7 @@ const Signup = ({navigation}) => {
                   width: '90%',
                   color: theme.colors.lightBlue,
                 }}
+                keyboardType={'email-address'}
                 placeholderTextColor={theme.colors.lightBlue}
                 placeholder={t('emailPlace')}
                 onChangeText={val => {
@@ -128,6 +129,7 @@ const Signup = ({navigation}) => {
                   width: '90%',
                   color: theme.colors.lightBlue,
                 }}
+                
                 placeholderTextColor={theme.colors.lightBlue}
                 placeholder={t('phonePlace')}
                 onChangeText={val => {
@@ -148,6 +150,7 @@ const Signup = ({navigation}) => {
                   width: '90%',
                   color: theme.colors.lightBlue,
                 }}
+                secureTextEntry={true}
                 placeholderTextColor={theme.colors.lightBlue}
                 placeholder={t('passwordPlaceholder')}
                 onChangeText={val => {
@@ -166,6 +169,8 @@ const Signup = ({navigation}) => {
                   width: '90%',
                   color: theme.colors.lightBlue,
                 }}
+                secureTextEntry={true}
+
                 placeholderTextColor={theme.colors.lightBlue}
                 placeholder={t('repeatPassword')}
                 onChangeText={val => {

@@ -1,7 +1,7 @@
-import {useFocusEffect} from '@react-navigation/native';
-import {color, Icon} from '@rneui/base';
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
+import { useFocusEffect } from '@react-navigation/native';
+import { color, Icon } from '@rneui/base';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   SafeAreaView,
   View,
@@ -10,17 +10,17 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native-gesture-handler';
 import StarRating from 'react-native-star-rating';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BackButton from '../../../components/backButton';
-import {Loading} from '../../../components/Loading';
-import {apiKey} from '../../../constants/constants';
-import {moderateScale} from '../../../constants/moderateScale';
-import {updateCallAPIstate} from '../../../redux/actions/auth';
-import {getHotels, homeDat, homeLoad} from '../../../redux/actions/home';
-import {theme} from '../../../theme/theme';
-import {Nodata} from './../../../components/noDataAvailable';
+import { Loading } from '../../../components/Loading';
+import { apiKey } from '../../../constants/constants';
+import { moderateScale } from '../../../constants/moderateScale';
+import { updateCallAPIstate } from '../../../redux/actions/auth';
+import { getHotels, homeDat, homeLoad } from '../../../redux/actions/home';
+import { theme } from '../../../theme/theme';
+import { Nodata } from './../../../components/noDataAvailable';
 import Styles from './styles';
 
 const data = [
@@ -53,15 +53,15 @@ const dataBottom = [
   },
 ];
 
-const HomeScreen = ({navigation}) => {
-  const {t} = useTranslation();
+const HomeScreen = ({ navigation }) => {
+  const { t } = useTranslation();
 
   const [starCount, setStarCount] = useState(3.5);
   const [hotels, setHotels] = useState([]);
 
   const dispatch = useDispatch();
-  const {homeLoading} = useSelector(state => state.home);
-  const {loginData} = useSelector(state => state.auth);
+  const { homeLoading } = useSelector(state => state.home);
+  const { loginData } = useSelector(state => state.auth);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -70,14 +70,14 @@ const HomeScreen = ({navigation}) => {
     }, [fetchHotels]),
   );
 
-  const renderItem = ({item, index}) => {
+  const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
         style={Styles.topFlatList}
         onPress={() => {
           handleReplace(item, index);
         }}>
-        <Image style={Styles.hotelPics} source={{uri: item.images[0]}} />
+        <Image style={Styles.hotelPics} source={{ uri: item.images[0] }} />
         <Text style={Styles.hotelName}>{item.name}</Text>
         <Text style={Styles.hotelAddres}>Almatar, st Khartoum - sudan</Text>
         <View style={Styles.ratingCont}>
@@ -90,7 +90,7 @@ const HomeScreen = ({navigation}) => {
               {item.rating.toString().substring(0, 3)}
             </Text>
             <StarRating
-              containerStyle={{width: '40%', marginLeft: 4}}
+              containerStyle={{ width: '40%', marginLeft: 4 }}
               disabled={false}
               maxStars={5}
               rating={item.rating}
@@ -119,7 +119,7 @@ const HomeScreen = ({navigation}) => {
 
   const handleReplace = async (item, index) => {
     await dispatch(homeDat(item));
-    navigation.navigate('HotelDetails', {index: index});
+    navigation.navigate('HotelDetails', { index: index });
   };
 
   return (
@@ -143,8 +143,8 @@ const HomeScreen = ({navigation}) => {
       {hotels?.length === 0 ? (
         <Nodata title={'No Hotels Available'} />
       ) : (
-        <View style={{flex: 1, justifyContent: 'space-between'}}>
-          <View style={{flex: 0.35}}>
+        <View style={{ flex: 1, justifyContent: 'space-between' }}>
+          <View style={{ flex: 0.35 }}>
             <View style={Styles.header}>
               <Text style={Styles.title}>{t('hotpkgs')}</Text>
               {/* <Text style={{color: theme.colors.darkBlue}}>View all</Text> */}
@@ -158,7 +158,7 @@ const HomeScreen = ({navigation}) => {
               renderItem={renderItem}
             />
           </View>
-          <View style={{flex: 0.65}}>
+          <View style={{ flex: 0.65 }}>
             <View style={Styles.header}>
               <Text style={Styles.title}>{t('hotelsAndAparts')}</Text>
               {/* <Text style={{color: theme.colors.darkBlue}}>View all</Text> */}
@@ -179,7 +179,7 @@ const HomeScreen = ({navigation}) => {
                     <Image
                       // resizeMode="contain"
                       style={Styles.bottomHotelPic}
-                      source={{uri: item.images[0]}}
+                      source={{ uri: item.images[0] }}
                     />
                     <View
                       style={{
@@ -190,7 +190,7 @@ const HomeScreen = ({navigation}) => {
                       }}>
                       <Text style={Styles.hotelNameBottom}>{item.name}</Text>
                       <View
-                        style={{flexDirection: 'row', alignItems: 'center'}}>
+                        style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Icon
                           name="location-pin"
                           type="entypo"
@@ -204,7 +204,7 @@ const HomeScreen = ({navigation}) => {
                       {/* <Text style={Styles.priceBottom}>SDG 1650/night</Text> */}
                       <View style={{}}>
                         <View>
-                          <View style={{flexDirection: 'row'}}>
+                          <View style={{ flexDirection: 'row' }}>
                             {item.flat_screen && (
                               <View style={Styles.amentiesTab}>
                                 <View style={Styles.amentiesIcon}>
@@ -334,7 +334,7 @@ const HomeScreen = ({navigation}) => {
                       }}>
                       <Text
                         style={{
-                          transform: [{rotate: '270deg'}],
+                          transform: [{ rotate: '270deg' }],
                           color: 'white',
                           fontSize: 10,
                         }}>
@@ -344,8 +344,8 @@ const HomeScreen = ({navigation}) => {
                   </TouchableOpacity>
                 );
               })}
-              <View style={{height: moderateScale(50)}}></View>
-              <View style={{height: 50}}></View>
+              <View style={{ height: moderateScale(50) }}></View>
+              <View style={{ height: 50 }}></View>
             </ScrollView>
           </View>
         </View>

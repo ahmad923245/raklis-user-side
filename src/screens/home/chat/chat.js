@@ -159,7 +159,7 @@ const Chat = ({navigation}) => {
         />
       </View>
       {users?.length === 0 ? (
-        <Nodata title={'No Conversation available'} />
+        <Nodata title={t('noconvertion')} />
       ) : (
         <View>
           {users?.map((item, index) => {

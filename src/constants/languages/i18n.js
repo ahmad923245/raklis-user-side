@@ -4,7 +4,8 @@ import english from '../languages/english.json';
 import arabic from '../languages/arabic.json';
 
 i18next.use(initReactI18next).init({
-  lng: 'en',
+  compatibilityJSON: 'v3',
+  lng: 'ara',
   resources: {
     en: english,
     ara: arabic,

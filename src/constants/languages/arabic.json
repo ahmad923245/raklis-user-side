@@ -1,13 +1,15 @@
 {
   "translation": {
+    "selectlanguage": "حدد لغة التطبيق",
     "login": "تسجيل الدخول",
+    "entermessage": "أدخل رسالة",
     "emailLabel": "البريد الإلكتروني أو رقم الهاتف",
     "emailPlaceHolder": "أدخل البريد الإلكتروني أو رقم الهاتف",
     "password": "كلمة المرور",
     "passwordPlaceholder": "أدخل كلمة المرور",
     "signUpQuesion": "ليس لديك حساب؟",
     "signup": "اشتراك",
-
+    "noconvertion":"لا توجد محادثة متاحة",
     "welcome": "أهلا وسهلا",
     "RikliTeam": "فريق ريكليس",
     "email": "البريد الإلكتروني",
@@ -35,7 +37,7 @@
     "Raklis": "راكليس",
     "searchPlace": "ابحث عن فندق",
     "datePlace": "حدد تاريخ",
-    "searchButton": "تحقق من الفندق المتاح",
+    "searchButton": "تحقق من العقارات المتاحة للإيجار",
 
     "hotpkgs": "الحزم الساخنة",
     "hotelsAndAparts": "الفنادق والشقق",

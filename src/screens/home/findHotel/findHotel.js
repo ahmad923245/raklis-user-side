@@ -27,7 +27,7 @@ const FindHotel = ({navigation}) => {
   const {t} = useTranslation();
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [date, setDate] = useState(t('datePlace'));
+  const [date, setDate] = useState(null);
   const [hotels, setHotels] = useState([]);
   const [hotelName, setHotelName] = useState('');
 
@@ -130,8 +130,7 @@ const FindHotel = ({navigation}) => {
           }}>
           <Icon name="calendar" type="feather" color={theme.colors.lightBlue} />
           <Text style={{width: '90%', color: theme.colors.lightBlue}}>
-            {' '}
-            {date}
+            {date ? date : t('datePlace')}
           </Text>
         </TouchableOpacity>
       </View>

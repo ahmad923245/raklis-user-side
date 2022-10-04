@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,25 +7,28 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import {Icon} from '@rneui/base';
-import {theme} from '../../../theme/theme';
+import { Icon } from '@rneui/base';
+import { theme } from '../../../theme/theme';
 import Styles from './styles';
 import Button from '../../../components/button';
 import BottomLogo from '../../../components/logo';
 import BackButton from '../../../components/backButton';
 import RnOtpTimer from 'rn-otp-timer';
-import {apiKey} from '../../../constants/constants';
-import {authLoad, emailVerify, Otp} from '../../../redux/actions/auth';
+import { apiKey } from '../../../constants/constants';
+import { authLoad, emailVerify, Otp } from '../../../redux/actions/auth';
 import ShowSnackBar from '../../../components/SnackBar';
-import {useDispatch, useSelector} from 'react-redux';
-import {Loading} from '../../../components/Loading';
-import {useTranslation} from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { Loading } from '../../../components/Loading';
+import { useTranslation } from 'react-i18next';
 import auth from '@react-native-firebase/auth';
 
-const OtpScreen = ({route, navigation}) => {
-  const {t} = useTranslation();
+const OtpScreen = ({ route, navigation }) => {
 
-  const {data} = route.params;
+
+
+  const { t } = useTranslation();
+
+  const { data } = route.params;
 
   const [otp, setOtp] = useState('');
   const [confirm, setConfirm] = useState(null);
@@ -34,7 +37,10 @@ const OtpScreen = ({route, navigation}) => {
 
   const dispatch = useDispatch();
 
-  const {authLoading} = useSelector(state => state.auth);
+  const { authLoading } = useSelector(state => state.auth);
+
+
+  console.log("this is loading state",authLoading)
 
   useEffect(() => {
     handleNav();
@@ -52,7 +58,7 @@ const OtpScreen = ({route, navigation}) => {
   // Handle the button press
   const signInWithPhoneNumber = async phoneNumber => {
     try {
-      const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+      const confirmation = await auth().signInWithPhoneNumber(phoneNumber,true);
       ShowSnackBar(`Otp sent to your Phone.${data.phone}`, 'green');
       dispatch(authLoad(false));
       setConfirm(confirmation);
@@ -70,7 +76,7 @@ const OtpScreen = ({route, navigation}) => {
     try {
       console.log(otp);
       const res = await confirm.confirm(otp);
-      res && navigation.navigate('AccountDetail', {data: data});
+     navigation.navigate('AccountDetail', { data: data });
     } catch (error) {
       console.log(error);
       console.warn('Invalid code.');
@@ -80,7 +86,7 @@ const OtpScreen = ({route, navigation}) => {
 
   const OtpSuccess = dat => {
     console.log('otp Success');
-    dat ? navigation.navigate('AccountDetail', {data: data}) : null;
+    dat ? navigation.navigate('AccountDetail', { data: data }) : null;
   };
 
   return (
@@ -103,7 +109,7 @@ const OtpScreen = ({route, navigation}) => {
         </Text>
         <View style={Styles.textInput}>
           <TextInput
-            style={{padding: 3, width: '90%', color: theme.colors.lightBlue}}
+            style={{ padding: 3, width: '90%', color: theme.colors.lightBlue }}
             placeholderTextColor={theme.colors.lightBlue}
             placeholder={t('otpPlace')}
             keyboardType="numeric"
@@ -112,7 +118,7 @@ const OtpScreen = ({route, navigation}) => {
             }}
           />
         </View>
-        <View style={{height: 40, justifyContent: 'center'}}>
+        <View style={{ height: 40, justifyContent: 'center' }}>
           <RnOtpTimer
             minutes={1}
             seconds={59}

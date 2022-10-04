@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   Text,
@@ -12,11 +12,11 @@ import {
 } from 'react-native';
 import BackButton from '../../../components/backButton';
 import ImagePicker from 'react-native-image-crop-picker';
-import {theme} from '../../../theme/theme';
+import { theme } from '../../../theme/theme';
 import Styles from './styles';
-import {Icon} from '@rneui/base';
+import { Icon } from '@rneui/base';
 import apiKey from '../../../constants/constants';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   changeAvatar,
   changeCurrency,
@@ -25,14 +25,14 @@ import {
   homeLoad,
   setLanguage,
 } from '../../../redux/actions/home';
-import {Loading} from '../../../components/Loading';
+import { Loading } from '../../../components/Loading';
 import ShowSnackBar from '../../../components/SnackBar';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
-const Setting = ({navigation}) => {
-  const {t, i18n} = useTranslation();
+const Setting = ({ navigation }) => {
+  const { t, i18n } = useTranslation();
 
-  const {loginData} = useSelector(state => state.auth);
+  const { loginData } = useSelector(state => state.auth);
   const [image, setImage] = useState(require('../../../images/hotel2.jpg'));
   const [imageUri, setImageUri] = useState(loginData.avatar);
   const [modalVisible, setModalVisible] = useState(false);
@@ -41,7 +41,7 @@ const Setting = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const {homeLoading} = useSelector(state => state.home);
+  const { homeLoading } = useSelector(state => state.home);
   console.log(apiKey);
 
   const dispatch = useDispatch();
@@ -96,7 +96,7 @@ const Setting = ({navigation}) => {
                   setModalVisible(false);
                 }}>
                 <Icon name="eye" type="feather" />
-                <Text style={{marginLeft: 20, color: 'black'}}>
+                <Text style={{ marginLeft: 20, color: 'black' }}>
                   {t('viewImage')}
                 </Text>
               </TouchableOpacity>
@@ -106,7 +106,7 @@ const Setting = ({navigation}) => {
                   openGallery();
                 }}>
                 <Icon name="image" type="feather" />
-                <Text style={{marginLeft: 20, color: 'black'}}>
+                <Text style={{ marginLeft: 20, color: 'black' }}>
                   {t('openGallery')}
                 </Text>
               </TouchableOpacity>
@@ -116,13 +116,13 @@ const Setting = ({navigation}) => {
                   openCamera();
                 }}>
                 <Icon name="camera" type="feather" />
-                <Text style={{marginLeft: 20, color: 'black'}}>
+                <Text style={{ marginLeft: 20, color: 'black' }}>
                   {t('openCamer')}
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{height: 20}}></View>
+          <View style={{ height: 20 }}></View>
         </View>
       </Modal>
     );
@@ -150,9 +150,9 @@ const Setting = ({navigation}) => {
           <View style={Styles.imageView}>
             <Image
               resizeMode="contain"
-              style={{width: '100%', height: '100%'}}
+              style={{ width: '100%', height: '100%' }}
               source={
-                imageUri === '' || imageUri === null ? image : {uri: imageUri}
+                imageUri === '' || imageUri === null ? image : { uri: imageUri }
               }
             />
           </View>
@@ -213,7 +213,7 @@ const Setting = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={Styles.header}>
         <BackButton
           onPress={() => {
@@ -234,11 +234,11 @@ const Setting = ({navigation}) => {
 
       <View style={Styles.middleCont}>
         <View style={Styles.options}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <Icon
               name="account-circle"
               type={'material-icons'}
-              style={{width: 30}}
+              style={{ width: 30 }}
               color={theme.colors.border}
             />
             <Text style={Styles.optionsText}>{t('changeProfile')}</Text>
@@ -250,7 +250,7 @@ const Setting = ({navigation}) => {
             <Image
               style={Styles.profileImage}
               source={
-                imageUri === '' || imageUri === null ? image : {uri: imageUri}
+                imageUri === '' || imageUri === null ? image : { uri: imageUri }
               }
             />
           </TouchableOpacity>
@@ -259,9 +259,9 @@ const Setting = ({navigation}) => {
 
       <View style={Styles.middleCont}>
         <View style={Styles.options}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon
-              style={{width: 30}}
+              style={{ width: 30 }}
               name="language"
               type={'material-icons'}
               color={theme.colors.border}
@@ -291,9 +291,9 @@ const Setting = ({navigation}) => {
 
       <View style={Styles.middleCont}>
         <View style={Styles.options}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon
-              style={{width: 30}}
+              style={{ width: 30 }}
               name="dollar"
               type={'font-awesome'}
               color={theme.colors.border}
@@ -322,9 +322,9 @@ const Setting = ({navigation}) => {
 
       <View style={Styles.middleCont}>
         <View style={Styles.options}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon
-              style={{width: 30}}
+              style={{ width: 30 }}
               name="key"
               type={'entypo'}
               color={theme.colors.border}
@@ -393,22 +393,22 @@ const Setting = ({navigation}) => {
       )}
       <View style={Styles.middleCont}>
         <View style={Styles.options}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon
-              style={{width: 30}}
+              style={{ width: 30 }}
               name="clipboard-list"
               type={'font-awesome-5'}
               color={theme.colors.border}
             />
             <Text style={Styles.optionsText}>{t('termAndConditions')}</Text>
           </View>
-          <TouchableOpacity style={Styles.button} onPress={() => {}}>
+          <TouchableOpacity style={Styles.button} onPress={() => { }}>
             <Text style={Styles.buttonText}>{t('check')}</Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <View style={[Styles.middleCont, {marginTop: 50}]}>
+      <View style={[Styles.middleCont, { marginTop: 50 }]}>
         <Text
           style={{
             fontWeight: 'bold',
